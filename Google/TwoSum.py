@@ -30,15 +30,21 @@ Constraints:
 Only one valid answer exists.
 '''
 
-nums=[12,35,6,6,4,6]
-target=10
+nums=[1,3,4,2]
+target=6
 targetList=[]
+flag=False
 for i in range(len(nums)):
     for j in range(1,len(nums),1):
         if(nums[i]+nums[j]==target):
-            targetList.append(nums[i])
-            targetList.append(nums[j])
-            break
-
+            if(i!=0):
+                if(nums[i]==nums[j] ):
+                    j+=1
+                targetList.append(i)
+                targetList.append(len(nums)-j+1)
+                flag=True
+                break
+    if(flag==True):
+        break
 for num in targetList:
     print(num)
