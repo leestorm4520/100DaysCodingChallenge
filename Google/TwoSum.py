@@ -30,21 +30,51 @@ Constraints:
 Only one valid answer exists.
 '''
 
+'''
+Approach 1: Brute Force
+Time Complexity: O(n^2)
+Space Complexity: O(1)
+'''
+
 nums=[1,3,4,2]
 target=6
 targetList=[]
 flag=False
 for i in range(len(nums)):
-    for j in range(1,len(nums),1):
+    for j in range(i,+1,len(nums),1):
         if(nums[i]+nums[j]==target):
-            if(i!=0):
-                if(nums[i]==nums[j] ):
-                    j+=1
-                targetList.append(i)
-                targetList.append(len(nums)-j+1)
-                flag=True
-                break
+            targetList.append(i)
+            targetList.append(j)
+            flag=True
+            break
     if(flag==True):
         break
 for num in targetList:
     print(num)
+
+'''
+Approach 2: Two-pass Hash Table
+
+hashMap={}
+for i in range(len(nums)):
+    hashMap[nums[i]]=i
+for i in range(len(nums)):
+    complement = target-nums[i]
+    if complement in hashMap and hashMap[complement]!=i:
+        return [i, hashMap[complement]]
+
+Time: T(n)=O(n)
+Space: S(n)=O(n)
+
+Approach 3: One-pass Hash Table
+
+hashMap={}
+for i in range(len(nums)):
+    complement=target-num[i]
+    if complement in hashMap:
+        return [i, hashMap[complement]]
+    hashMap[nums[i]]=i
+
+Time: T(n)=O(n)
+Space: S(n)=O(n)
+'''
