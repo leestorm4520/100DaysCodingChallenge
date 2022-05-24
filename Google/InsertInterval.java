@@ -2,38 +2,33 @@ import java.util.*;
 
 
 public class InsertInterval{
-    class Interval{
-        int start;
-        int end;    
-        
-        Interval(int start, int end){
-            this.start=start;
-            this.end=end;
-        }
-    }
 
-    public void main(String[] args){
+    public static void main(String[] args){
         int[][] intervals={{1,3}, {6,9}};
         int[] newInterval={2,5};
         ArrayList<Interval> result=new ArrayList<Interval>();
-        Interval temp;
         int i,j;
 
         if(newInterval[1]<intervals[0][0]){
+        
             result.add(new Interval(newInterval[0], newInterval[1]));
             for(i=0;i<intervals.length; i++) result.add(new Interval(intervals[i][0], intervals[i][1]));
         }
-        else if(newInterval[0]>intervals[intervals.length][1]){
+        else if(newInterval[0]>intervals[intervals.length-1][1]){
             for(i=0;i<intervals.length; i++) result.add(new Interval(intervals[i][0], intervals[i][1]));
             result.add(new Interval(newInterval[0], newInterval[1]));
         }
         else{
             for(i=0;i<intervals.length;i++){
                 if(newInterval[0]>intervals[i][0]){
-                    for(j=i;j<intervals.length;j++){
-                        if(newInterval[1]<intervals[j][1]) intervals[i][1]=intervals[j][1];
+                    for(j=i+1;j<intervals.length;j++){
+                        if(newInterval[1]>intervals[j][1]){
+                            intervals[i][1]=intervals[j-1][1];
+                            break;
+                        }
+                        else if(newInterval[1]>intervals[j-1][1]) intervals[i][1]=intervals[j-1][1];
                     }
-                    result.add(new Interval(intervals[i][0], intervals[j][1]));
+                    result.add(new Interval(intervals[i][0], intervals[j-1][1]));
                     i=j;
                 }
                 else{
