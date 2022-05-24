@@ -8,6 +8,7 @@ public class InsertInterval{
         int[] newInterval={2,5};
         ArrayList<Interval> result=new ArrayList<Interval>();
         int i,j;
+        int startIndex=0, endIndex=0;
 
         if(newInterval[1]<intervals[0][0]){
         
@@ -21,19 +22,23 @@ public class InsertInterval{
         else{
             for(i=0;i<intervals.length;i++){
                 if(newInterval[0]>intervals[i][0]){
-                    for(j=i+1;j<intervals.length;j++){
-                        if(newInterval[1]>intervals[j][1]){
-                            intervals[i][1]=intervals[j-1][1];
-                            break;
-                        }
-                        else if(newInterval[1]>intervals[j-1][1]) intervals[i][1]=intervals[j-1][1];
-                    }
-                    result.add(new Interval(intervals[i][0], intervals[j-1][1]));
-                    i=j;
+                    startIndex=i;
+                    break;
                 }
+            }
+            for(i=startIndex;i<intervals.length;i++){
+                if(newInterval[1]>=intervals[i][1]) intervals[i][1]=newInterval[1];
                 else{
-                    result.add(new Interval(intervals[i][0], intervals[i][1]));
+                    endIndex=i-1;
+                    break;
                 }
+            }
+            for(i=0;i<intervals.length;i++){
+                if(i==startIndex){
+                    result.add(new Interval(intervals[i][0], intervals[endIndex][1]));
+                }
+                else if(i>startIndex && i<=endIndex) continue;
+                else{ result.add(new Interval(intervals[i][0], intervals[i][1]));}
             }
         }
 
