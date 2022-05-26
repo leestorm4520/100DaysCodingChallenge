@@ -7,16 +7,19 @@ public class InsertInterval{
         int[][] intervals={{1,2},{3,5},{6,7},{8,10},{12,16}};
         int[] newInterval={4,8};
         ArrayList<Interval> result=new ArrayList<Interval>();
-        int i,j;
+        int i=0;
         int start=newInterval[0], end=newInterval[1];
 
        
-        while(i<intervals.length && intervals[i][1]<start) result.add(new Interval(intervals[i++][0], intervals[i++][1]);
+        while(i<intervals.length && intervals[i][1]<start) result.add(new Interval(intervals[i++][0], intervals[i++][1]));
 
         while(i<intervals.length && intervals[i][0]<=end){
             start=Math.min(start, intervals[i][0]);
             end=Math.max(end, intervals[i][end]);
+            i++;
         }
+        result.add(new Interval(start, end));
+        while(i<intervals.length) result.add(new Interval(intervals[i++][0], intervals[i++][1]));
         int[][] finals=new int[result.size()][2];
         for(i=0;i<finals.length;i++){
             finals[i][0]=result.get(i).start;
