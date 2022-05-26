@@ -27,3 +27,16 @@ intervals is sorted by starti in ascending order.
 newInterval.length == 2
 0 <= start <= end <= 105
 '''
+class Interval:
+    def __init__(self, start, end):
+        self.start=start
+        self.end=end
+    def insert(self, intervals, newInterval):
+        s, e=newInterval.start, newInterval.end
+        parts=merge, left, right=[],[],[]
+        for i in intervals:
+            parts[(i.end<s)-(i.start>e)].append(i)
+        if merge:
+            s=min(s,merge[0].start)
+            e=max(e,merge[-1].end)
+        return left+ [Interval(s,e)] + right
