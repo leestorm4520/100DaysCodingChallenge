@@ -21,7 +21,7 @@ public class InsertInterval{
         }
         else{
             for(i=0;i<intervals.length;i++){
-                if(newInterval[0]>intervals[i][0]){
+                if(newInterval[0]>=intervals[i][0] && newInterval[0]<=intervals[i][1]){
                     startIndex=i;
                     break;
                 }
@@ -43,7 +43,7 @@ public class InsertInterval{
 
             for(i=0;i<intervals.length;i++){
                 if(i==startIndex){
-                    if(intervals[endIndex][1]<newInterval[1]) result.add(new Interval(intervals[i][0], intervals[endIndex][1]));
+                    if(intervals[endIndex][1]>newInterval[1]) result.add(new Interval(intervals[i][0], intervals[endIndex][1]));
                     else result.add(new Interval(intervals[i][0], newInterval[1]));
                 }
                 else if(i>startIndex && i<=endIndex) continue;
