@@ -4,8 +4,8 @@ import java.util.*;
 public class InsertInterval{
 
     public static void main(String[] args){
-        int[][] intervals={{1,3}, {6,9}};
-        int[] newInterval={2,5};
+        int[][] intervals={{1,2},{3,5},{6,7},{8,10},{12,16}};
+        int[] newInterval={4,8};
         ArrayList<Interval> result=new ArrayList<Interval>();
         int i,j;
         int startIndex=0, endIndex=0;
@@ -26,16 +26,25 @@ public class InsertInterval{
                     break;
                 }
             }
+            
             for(i=startIndex;i<intervals.length;i++){
-                if(newInterval[1]>=intervals[i][1]) intervals[i][1]=newInterval[1];
-                else{
-                    endIndex=i-1;
+                if(newInterval[1]<=intervals[i][1] && newInterval[1]>=intervals[i][0]){
+                    endIndex=i;
                     break;
                 }
+                else if(newInterval[1]<intervals[i][0]){
+                    endIndex=i-1;
+                }
+                else{
+                    endIndex=startIndex;
+                }
             }
+
+
             for(i=0;i<intervals.length;i++){
                 if(i==startIndex){
-                    result.add(new Interval(intervals[i][0], intervals[endIndex][1]));
+                    if(intervals[endIndex][1]<newInterval[1]) result.add(new Interval(intervals[i][0], intervals[endIndex][1]));
+                    else result.add(new Interval(intervals[i][0], newInterval[1]));
                 }
                 else if(i>startIndex && i<=endIndex) continue;
                 else{ result.add(new Interval(intervals[i][0], intervals[i][1]));}
