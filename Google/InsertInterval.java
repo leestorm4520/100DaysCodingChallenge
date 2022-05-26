@@ -8,49 +8,15 @@ public class InsertInterval{
         int[] newInterval={4,8};
         ArrayList<Interval> result=new ArrayList<Interval>();
         int i,j;
-        int startIndex=0, endIndex=0;
+        int start=newInterval[0], end=newInterval[1];
 
-        if(newInterval[1]<intervals[0][0]){
-        
-            result.add(new Interval(newInterval[0], newInterval[1]));
-            for(i=0;i<intervals.length; i++) result.add(new Interval(intervals[i][0], intervals[i][1]));
+       
+        while(i<intervals.length && intervals[i][1]<start) result.add(new Interval(intervals[i++][0], intervals[i++][1]);
+
+        while(i<intervals.length && intervals[i][0]<=end){
+            start=Math.min(start, intervals[i][0]);
+            end=Math.max(end, intervals[i][end]);
         }
-        else if(newInterval[0]>intervals[intervals.length-1][1]){
-            for(i=0;i<intervals.length; i++) result.add(new Interval(intervals[i][0], intervals[i][1]));
-            result.add(new Interval(newInterval[0], newInterval[1]));
-        }
-        else{
-            for(i=0;i<intervals.length;i++){
-                if(newInterval[0]>=intervals[i][0] && newInterval[0]<=intervals[i][1]){
-                    startIndex=i;
-                    break;
-                }
-            }
-            
-            for(i=startIndex;i<intervals.length;i++){
-                if(newInterval[1]<=intervals[i][1] && newInterval[1]>=intervals[i][0]){
-                    endIndex=i;
-                    break;
-                }
-                else if(newInterval[1]<intervals[i][0]){
-                    endIndex=i-1;
-                }
-                else{
-                    endIndex=startIndex;
-                }
-            }
-
-
-            for(i=0;i<intervals.length;i++){
-                if(i==startIndex){
-                    if(intervals[endIndex][1]>newInterval[1]) result.add(new Interval(intervals[i][0], intervals[endIndex][1]));
-                    else result.add(new Interval(intervals[i][0], newInterval[1]));
-                }
-                else if(i>startIndex && i<=endIndex) continue;
-                else{ result.add(new Interval(intervals[i][0], intervals[i][1]));}
-            }
-        }
-
         int[][] finals=new int[result.size()][2];
         for(i=0;i<finals.length;i++){
             finals[i][0]=result.get(i).start;
@@ -60,3 +26,28 @@ public class InsertInterval{
        
     }
 }
+
+/*
+public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+    
+List<Interval> result = new ArrayList<>();
+int i = 0;
+int start = newInterval.start;
+int end = newInterval.end;
+    
+
+while (i < intervals.size() && intervals.get(i).end < start) {
+    result.add(intervals.get(i++));
+}
+
+while (i < intervals.size() && intervals.get(i).start <= end) {
+    start = Math.min(start, intervals.get(i).start);
+    end = Math.max(end, intervals.get(i).end);
+    i++;
+}
+result.add(new Interval(start,end)); 
+
+while (i < intervals.size()) result.add(intervals.get(i++)); 
+return result;
+}
+*/
