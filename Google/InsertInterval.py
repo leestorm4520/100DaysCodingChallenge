@@ -37,6 +37,11 @@ class Interval:
         for i in intervals:
             parts[(i.end<s)-(i.start>e)].append(i) #in parts, there are merge, left, right [0][1][2].
                                                 #intervals[i].end<newInterval.start - intervals[i].start> newInterval.end
+                                                #the value will be 0, 1 and -1 (0-0, 1-1, 1-0, 0-1) corresponding to merge, left, and right respestively
+                                                #merge happens when both false or both true
+                                                #left happens when True-False
+                                                #right happens when False-True
+        #if merge is not empty then compare the starting interval with s - find min and compare the ending interval with e - find max
         if merge:
             s=min(s,merge[0].start)
             e=max(e,merge[-1].end)

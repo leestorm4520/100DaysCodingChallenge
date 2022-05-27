@@ -30,7 +30,6 @@ public class InsertInterval{
             result.add(new Interval(intervals[i][0], intervals[i][1]));
             i++;
         }
-        print(intervals[0][1]<newInterval[0]-intervals[0][0]>newInterval[1])
         int[][] finals=new int[result.size()][2];
         for(i=0;i<finals.length;i++){
             finals[i][0]=result.get(i).start;
