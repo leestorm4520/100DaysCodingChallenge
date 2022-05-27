@@ -35,7 +35,8 @@ class Interval:
         s, e=newInterval.start, newInterval.end
         parts=merge, left, right=[],[],[] #divide intervals into left and right parts to merge 
         for i in intervals:
-            parts[(i.end<s)-(i.start>e)].append(i) #if the ending interval is less than start and
+            parts[(i.end<s)-(i.start>e)].append(i) #in parts, there are merge, left, right [0][1][2].
+                                                #intervals[i].end<newInterval.start - intervals[i].start> newInterval.end
         if merge:
             s=min(s,merge[0].start)
             e=max(e,merge[-1].end)
