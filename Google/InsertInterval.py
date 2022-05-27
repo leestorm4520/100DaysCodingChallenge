@@ -33,9 +33,9 @@ class Interval:
         self.end=end
     def insert(self, intervals, newInterval):
         s, e=newInterval.start, newInterval.end
-        parts=merge, left, right=[],[],[]
+        parts=merge, left, right=[],[],[] #divide intervals into left and right parts to merge 
         for i in intervals:
-            parts[(i.end<s)-(i.start>e)].append(i)
+            parts[(i.end<s)-(i.start>e)].append(i) #if the ending interval is less than start and
         if merge:
             s=min(s,merge[0].start)
             e=max(e,merge[-1].end)
