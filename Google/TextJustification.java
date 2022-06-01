@@ -1,10 +1,7 @@
 /*
 Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
-
 You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
-
 Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
-
 For the last line of text, it should be left-justified and no extra space is inserted between words.
 
 Note:
@@ -56,6 +53,14 @@ words[i] consists of only English letters and symbols.
 1 <= maxWidth <= 100
 words[i].length <= maxWidth
 */
+import java.util.*;
 public class TextJustification {
+    String[] words=new String(){"This", "is", "an", "example", "of", "text", "justification."};
+    int maxWidth=16;
+    List<Integer> lengths=new ArrayList<Integer>();
+    List<String> result= new ArrayList<String>();
+    int i;
+    for(i=0;i<words.length();i++) lengths.add(words[i].length);
+
     
 }
