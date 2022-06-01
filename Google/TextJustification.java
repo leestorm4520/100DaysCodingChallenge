@@ -55,12 +55,19 @@ words[i].length <= maxWidth
 */
 import java.util.*;
 public class TextJustification {
-    String[] words=new String(){"This", "is", "an", "example", "of", "text", "justification."};
+    String[] words=new String[]{"This", "is", "an", "example", "of", "text", "justification."};
     int maxWidth=16;
     List<Integer> lengths=new ArrayList<Integer>();
     List<String> result= new ArrayList<String>();
-    int i;
-    for(i=0;i<words.length();i++) lengths.add(words[i].length);
+    String tmp=new String();
+    int i, numWord=1, numSpace=1, numCharLeft=maxWidth;
+    char space=' ';
+    //for(i=0;i<words.length();i++) lengths.add(words[i].length);
+    while(i<words.length()){
+        if(numCharLeft>0){
+            numCharLeft=maxWidth-words[i].length();
+        }
+    }
 
     
 }
