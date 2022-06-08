@@ -60,26 +60,46 @@ words[i].length <= maxWidth
 Algorithm:
   Start with the left being the first word
   findRight: try to go as far right as possible until we fill maxWidth
-  justify:
+  justify: in all cases, pad the right side with spaces until we reach max width for the line
+    1. if it's one word, the result is just that word
+    2. if it's the last line, the result is all words separated by a single space
+    3. Otherwise, calculate the size of each space evenly and if there's a remainder,
+    distribute an extra space until it is gone
 
 */
 
 import java.util.*;
 public class TextJustification {
+  //find the right index
+    private static int findRight(int left, String[] words, int maxWidth){
+      int right=left;
+      return right;
+    }
+    private static String justify(int left, int right, String[] words, int maxWidth){
+
+    }
+    private static int wordsLength(int left, int right, String[] words){
+      int wordLength=0;
+      return wordLength;
+
+    }
+    private static String padResult(String result, int maxWidth){
+      
+    }
+    private static String blank(int length){
+
+    }
     public static void main(String args[]){
       String[] words=new String[]{"This", "is", "an", "example", "of", "text", "justification."};
       int maxWidth=16;
-      List<Integer> lengths=new ArrayList<Integer>();
-      List<String> result= new ArrayList<String>();
-      String tmp=new String();
-      int i, numWord=1, numSpace=1, numCharLeft=maxWidth;
-      char space=' ';
-      //for(i=0;i<words.length();i++) lengths.add(words[i].length);
-      while(i<words.length()){
-          if(numCharLeft>0){
-              numCharLeft=maxWidth-words[i].length();
-          }
+      int left=0;
+      List<String> result=new ArrayList<>();
+      while(left<words.length){
+        int right=findRight(left, words, maxWidth);
+        result.add(justify(left, right, words, maxWidth));
+        left=right+1;
       }
+      
   }
     
 }
