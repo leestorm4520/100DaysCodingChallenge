@@ -54,21 +54,32 @@ words[i] consists of only English letters and symbols.
 1 <= maxWidth <= 100
 words[i].length <= maxWidth
 */
+
+
+/*
+Algorithm:
+  Start with the left being the first word
+  findRight: try to go as far right as possible until we fill maxWidth
+  justify:
+
+*/
+
 import java.util.*;
 public class TextJustification {
-    String[] words=new String[]{"This", "is", "an", "example", "of", "text", "justification."};
-    int maxWidth=16;
-    List<Integer> lengths=new ArrayList<Integer>();
-    List<String> result= new ArrayList<String>();
-    String tmp=new String();
-    int i, numWord=1, numSpace=1, numCharLeft=maxWidth;
-    char space=' ';
-    //for(i=0;i<words.length();i++) lengths.add(words[i].length);
-    while(i<words.length()){
-        if(numCharLeft>0){
-            numCharLeft=maxWidth-words[i].length();
-        }
-    }
-
+    public static void main(String args[]){
+      String[] words=new String[]{"This", "is", "an", "example", "of", "text", "justification."};
+      int maxWidth=16;
+      List<Integer> lengths=new ArrayList<Integer>();
+      List<String> result= new ArrayList<String>();
+      String tmp=new String();
+      int i, numWord=1, numSpace=1, numCharLeft=maxWidth;
+      char space=' ';
+      //for(i=0;i<words.length();i++) lengths.add(words[i].length);
+      while(i<words.length()){
+          if(numCharLeft>0){
+              numCharLeft=maxWidth-words[i].length();
+          }
+      }
+  }
     
 }
