@@ -82,6 +82,13 @@ public class TextJustification {
       return right-1;
     }
     private static String justify(int left, int right, String[] words, int maxWidth){
+      if(right-left==0) return padResult(words[left], maxWidth); //if there's no words, the phrase is just the space
+
+      boolean isLastLine=right==words.length-1;
+      int numSpaces=right-left;
+      int totalSpace=maxWidth-wordsLength(left, right, words);
+
+      String
 
     }
     private static int wordsLength(int left, int right, String[] words){
