@@ -88,8 +88,21 @@ public class TextJustification {
       int numSpaces=right-left;
       int totalSpace=maxWidth-wordsLength(left, right, words);
 
-      String
+      String space=""; int remainder=0;
+      if(isLastLine){ 
+        space=" ";
+        remainder=0;
+      }
+      else{ 
+        space=blank(totalSpace/numSpaces);
+        remainder=totalSpace%numSpaces;
+      }
 
+      StringBuilder result=new StringBuilder();
+      for(int i=left; i<=right;i++){
+        result.append(words[i]).append(space).append(remainder-- > 0 ? " ":"");
+      }
+      return padResult(result.toString().trim(), maxWidth);
     }
     private static int wordsLength(int left, int right, String[] words){
       int wordsLength=0;
