@@ -119,6 +119,14 @@ public class TextJustification {
       return blank;
       //return new String(new char[length]).replace('\0',' ');
     }
+
+    //main function
+    /*
+     * left is the starting index counting while array "words" still has words
+     * 1st: find the right index is <= "maxWidth"
+     * 2nd: add the phrases to the arraylist "result"
+     * increment left by right+1 (since the words stop at the right index every iteration)
+     */
     public static void main(String args[]){
       String[] words=new String[]{"This", "is", "an", "example", "of", "text", "justification."};
       int maxWidth=16;
