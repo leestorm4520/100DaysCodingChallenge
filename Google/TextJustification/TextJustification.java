@@ -76,11 +76,11 @@ public class TextJustification {
       //start the sum by adding the length of the next word in the "words" array: sum= words[left+1].length()
       int sum=words[right++].length();
 
-      //condition: right index is less than the total length of "words" array and the sum accumulated+1 (for the space) + the length of the next word
+      //condition: right index is less than the total length of "words" array and the sum accumulated + 1 (for the space) + the length of the next word
       while(right<words.length && (sum+1+words[right].length())<=maxWidth){
         sum+=1+words[right++].length();
       }
-
+      //because, in order to compare the word length, we increment right in advance so we decrement before returning back to the main function
       return right-1;
     }
     private static String justify(int left, int right, String[] words, int maxWidth){
