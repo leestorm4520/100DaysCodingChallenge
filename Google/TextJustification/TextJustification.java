@@ -73,9 +73,10 @@ public class TextJustification {
   //find the right index by adding the next word length until it exceeds the maxWidth
     private static int findRight(int left, String[] words, int maxWidth){
       int right=left;
-      //start the sum by adding the next length of the number in the "words" array: sum= words[left+1].length()
+      //start the sum by adding the length of the next word in the "words" array: sum= words[left+1].length()
       int sum=words[right++].length();
 
+      //condition: right index is less than the total length of "words" array and the sum accumulated+1 (for the space) + the length of the next word
       while(right<words.length && (sum+1+words[right].length())<=maxWidth){
         sum+=1+words[right++].length();
       }
