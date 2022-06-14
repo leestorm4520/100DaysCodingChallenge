@@ -69,7 +69,29 @@ Algorithm:
 */
 
 import java.util.*;
-public class TextJustification {
+public class TextJustify {
+   //main function
+    /*
+     * left is the starting index counting while array "words" still has words
+     * 1st: find the right index is <= "maxWidth"
+     * 2nd: add the phrases to the arraylist "result"
+     * increment left by right+1 (since the words stop at the right index every iteration)
+     */
+  public static void main(String args[]){
+    String[] words=new String[]{"This", "is", "an", "example", "of", "text", "justification."};
+    int maxWidth=16;
+    int left=0;
+    List<String> result=new ArrayList<>();
+    while(left<words.length){
+      int right=findRight(left, words, maxWidth);
+      result.add(justify(left, right, words, maxWidth));
+      left=right+1;
+    }
+    for(String line: result){
+      System.out.println(line);
+    }
+    
+}
   //find the right index by adding the next word length until it exceeds the maxWidth
     private static int findRight(int left, String[] words, int maxWidth){
       int right=left;
@@ -111,6 +133,7 @@ public class TextJustification {
     private static int wordsLength(int left, int right, String[] words){
       int wordsLength=0;
       for(int i=0; i<=right;i++) wordsLength+=words[i].length();
+      //find the length of each line
       return wordsLength;
 
     }
@@ -119,30 +142,12 @@ public class TextJustification {
       //add the string with additional spaces
     }
     private static String blank(int length){
-      String blank="";
-      for(int i=0;i<length;i++) blank+=" ";
-      return blank;
-      //return new String(new char[length]).replace('\0',' ');
+      // String blank="";
+      // for(int i=0;i<length;i++) blank+=" ";
+      // return blank;
+      return new String(new char[length]).replace('\0',' ');
     }
 
-    //main function
-    /*
-     * left is the starting index counting while array "words" still has words
-     * 1st: find the right index is <= "maxWidth"
-     * 2nd: add the phrases to the arraylist "result"
-     * increment left by right+1 (since the words stop at the right index every iteration)
-     */
-    public static void main(String args[]){
-      String[] words=new String[]{"This", "is", "an", "example", "of", "text", "justification."};
-      int maxWidth=16;
-      int left=0;
-      List<String> result=new ArrayList<>();
-      while(left<words.length){
-        int right=findRight(left, words, maxWidth);
-        result.add(justify(left, right, words, maxWidth));
-        left=right+1;
-      }
-      
-  }
+   
     
 }
