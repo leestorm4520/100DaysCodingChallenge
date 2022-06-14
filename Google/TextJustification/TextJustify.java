@@ -142,10 +142,10 @@ public class TextJustify {
       //add the string with additional spaces
     }
     private static String blank(int length){
-      // String blank="";
-      // for(int i=0;i<length;i++) blank+=" ";
-      // return blank;
-      return new String(new char[length]).replace('\0',' ');
+      String blank="";
+      for(int i=0;i<length;i++) blank+=" ";
+      return blank;
+      
     }
 
    
