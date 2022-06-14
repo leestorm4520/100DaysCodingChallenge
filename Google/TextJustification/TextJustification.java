@@ -86,9 +86,10 @@ public class TextJustification {
     private static String justify(int left, int right, String[] words, int maxWidth){
       if(right-left==0) return padResult(words[left], maxWidth); //if there's no words, the phrase is just the space
 
-      boolean isLastLine=right==words.length-1;
-      int numSpaces=right-left;
+      boolean isLastLine=right==words.length-1; //check if it's the last word in the array
+      int numSpaces=right-left; //find number of words on each line
       int totalSpace=maxWidth-wordsLength(left, right, words);
+      //find how many spaces needed
 
       String space=""; int remainder=0;
       if(isLastLine){ 
@@ -96,13 +97,14 @@ public class TextJustification {
         remainder=0;
       }
       else{ 
-        space=blank(totalSpace/numSpaces);
-        remainder=totalSpace%numSpaces;
+        space=blank(totalSpace/numSpaces); //how much spaces between each word
+        remainder=totalSpace%numSpaces; //how much spaces between the 2rd last and the last
       }
 
       StringBuilder result=new StringBuilder();
       for(int i=left; i<=right;i++){
         result.append(words[i]).append(space).append(remainder-- > 0 ? " ":"");
+        //words[i] + space (needed between each words) + (decrement remainder in each iteration - if remainder>0, then add " ", else "")
       }
       return padResult(result.toString().trim(), maxWidth);
     }
@@ -114,6 +116,7 @@ public class TextJustification {
     }
     private static String padResult(String result, int maxWidth){
       return result+blank(maxWidth-result.length());
+      //add the string with additional spaces
     }
     private static String blank(int length){
       String blank="";
