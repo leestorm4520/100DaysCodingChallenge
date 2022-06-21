@@ -37,6 +37,17 @@ s and t consist of uppercase and lowercase English letters.
 
 Follow up: Could you find an algorithm that runs in O(m + n) time?
  */
+/*
+ * Algorithm (Brute Force Possibly)
+ * 1. Store all the character in a HashMap (characters as key and frequency to which the character appears as value) for checking
+ */
+import java.util.*;
 public class MinWindow {
+
+    public static void main(String args[]){
+        String s="ADOBECODEBANC";
+        String t="ABC";
+    }
+    public static HashMap<
     
 }
