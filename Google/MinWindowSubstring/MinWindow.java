@@ -52,12 +52,18 @@ public class MinWindow {
 
         System.out.println(minWindow(left, right, s, t));
     }
+    //store character and its frequency into a hashmap
     public static HashMap<Character, Integer> storeChar(String t){
+        HashMap<Character, Integer> hashChar=new HashMap<Character, Integer>();
+        for(char c: t.toCharArray()){
+            if(checkExist(hashChar)) hashChar.put(c,1);
+        }
 
     }
-
-    public static boolean checkExist(HashMap<Character, Interger> hashChar){
-
+    //update the value of character frequency whenever the pointer is moved
+    public static boolean updateHash(HashMap<Character, Interger> hashChar, int left, int right, String s, char c){
+        if(hashChar.containsKey) return true;
+        else return false;
     }
     //possibly recursively go through the bigger string to check for the characters
     public static String minWindow(int left, int right, String s, String t){
