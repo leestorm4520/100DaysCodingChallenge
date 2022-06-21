@@ -40,6 +40,7 @@ Follow up: Could you find an algorithm that runs in O(m + n) time?
 /*
  * Algorithm (Brute Force Possibly)
  * 1. Store all the character in a HashMap (characters as key and frequency to which the character appears as value) for checking
+ * 2. Create 2 positional indexes (left and right) - window that has length S
  */
 import java.util.*;
 public class MinWindow {
@@ -47,7 +48,20 @@ public class MinWindow {
     public static void main(String args[]){
         String s="ADOBECODEBANC";
         String t="ABC";
+        int left=0, right=s.length()-1;
+
+        System.out.println(minWindow(left, right, s, t));
     }
-    public static HashMap<
+    public static HashMap<Character, Integer> storeChar(String t){
+
+    }
+
+    public static boolean checkExist(HashMap<Character, Interger> hashChar){
+
+    }
+    //possibly recursively go through the bigger string to check for the characters
+    public static String minWindow(int left, int right, String s, String t){
+
+    }
     
 }
