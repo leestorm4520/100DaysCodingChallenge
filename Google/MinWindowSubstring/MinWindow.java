@@ -51,56 +51,33 @@ public class MinWindow {
 
         System.out.println(minWindow(s, t));
     }
-    //store character and its frequency into a hashmap
-    public static HashMap<Character, Integer> storeChar(String t){
-        HashMap<Character, Integer> hashChar=new HashMap<Character, Integer>();
-        for(char c: t.toCharArray()){
-            if(!hashChar.containsKey(c)) hashChar.put(c,1);
-            else hashChar.put(c, hashChar.get(c)+1);
-        }
-        return hashChar;
-    }
 
-    //check if th
-
-    //update the value of character frequency whenever the pointer is moved
-    public static void updateHash(HashMap<Character, Interger> hashChar, int left, int right, String s){
-        for(int i=left; i<right;i++){
-            char c=s.charAt(i);
-            if(hashChar.containsKey(c)) hashChar.put(c, hashChar.get(c)+1);
-        }     
-    }
-
-    //possibly recursively go through the bigger string to check for the characters
     public static String minWindow(String s, String t){
-        int left=0, right=s.length()-1;        
-        HashMap<Character, Integer> hashChar= storeChar(t);
+        //create a dictionary using array
+        char[] arr_char=new char[128];
+        for(char c: s.toCharArray()) arr_char[c]++; //character and its corresponding frequency in the string s
 
-        int start=0, end=0;
-        char[] s_arr= s.toCharArray();
-        String result= new String();
-        for(int i=0;i<s.length();i++){
-            if(!hashChar.containsKey(s_arr[left])){
+        //left anchor - right anchor - mininum index - counter as the length of the smaller string
+        int left=0, right=0, minStart=0, counter= t.length(), minLength=Integer.MAX_VALUE;
+        while(right<s.length()){
+            char c1=s.charAt(right);
+            if(arr_char[c1]>0) counter--;
+            arr_char[c1]--;
+            right++;
+
+            while(counter==0){
+                if((right-left) < minLength){
+                    minLength=right-left;
+                    minStart=left;
+                }
+
+                char c2=s.charAt(left);
+                arr_char[c2]++;
+                if(arr_char[c2]>0) counter++;
                 left++;
-                updateHash(hashChar, 0, left-1, s);
             }
-            else if(!hashChar.containsKey(s_arr[right])){
-                right--;
-                updateHash(hashChar, right+1, s.length()-1, s);
-            }
-            else{
-                
-            }
-
-            if((right-left) < t.length()){
-                result="";
-                break;
-            }
-            //subtract the frequency
         }
-
-
-        return result;
+        return minLength==Integer.MAX_VALUE? "" : s.substring(minStart, minStart+minLength);
     }
     
 }
