@@ -48,9 +48,8 @@ public class MinWindow {
     public static void main(String args[]){
         String s="ADOBECODEBANC";
         String t="ABC";
-        int left=0, right=s.length()-1;
 
-        System.out.println(minWindow(left, right, s, t));
+        System.out.println(minWindow(s, t));
     }
     //store character and its frequency into a hashmap
     public static HashMap<Character, Integer> storeChar(String t){
@@ -70,9 +69,28 @@ public class MinWindow {
 
     }
     //possibly recursively go through the bigger string to check for the characters
-    public static String minWindow(int left, int right, String s, String t){
+    public static String minWindow(String s, String t){
+        int left=0, right=s.length()-1;        
+        HashMap<Character, Integer> hashChar= storeChar(t);
 
-        //subtract the frequency
+        char[] s_arr= s.toCharArray();
+        String result= new String();
+        for(int i=0;i<s.length();i++){
+            if(!hashChar.containsKey(s_arr[left])){
+                left++;
+            }
+            if(!hashChar.containsKey(s_arr[right])){
+                right++;
+            }
+            if((right-left) < t.length()){
+                result="";
+                break;
+            }
+            //subtract the frequency
+        }
+
+
+        return result;
     }
     
 }
