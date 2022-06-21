@@ -60,28 +60,38 @@ public class MinWindow {
         }
         return hashChar;
     }
+
+    //check if th
+
     //update the value of character frequency whenever the pointer is moved
     public static void updateHash(HashMap<Character, Interger> hashChar, int left, int right, String s){
         for(int i=left; i<right;i++){
             char c=s.charAt(i);
             if(hashChar.containsKey(c)) hashChar.put(c, hashChar.get(c)+1);
         }     
-
     }
+
     //possibly recursively go through the bigger string to check for the characters
     public static String minWindow(String s, String t){
         int left=0, right=s.length()-1;        
         HashMap<Character, Integer> hashChar= storeChar(t);
 
+        int start=0, end=0;
         char[] s_arr= s.toCharArray();
         String result= new String();
         for(int i=0;i<s.length();i++){
             if(!hashChar.containsKey(s_arr[left])){
                 left++;
+                updateHash(hashChar, 0, left-1, s);
             }
-            if(!hashChar.containsKey(s_arr[right])){
-                right++;
+            else if(!hashChar.containsKey(s_arr[right])){
+                right--;
+                updateHash(hashChar, right+1, s.length()-1, s);
             }
+            else{
+                
+            }
+
             if((right-left) < t.length()){
                 result="";
                 break;
