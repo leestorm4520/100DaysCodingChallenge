@@ -54,10 +54,9 @@ public class MinWindow {
 
     public static String minWindow(String s, String t){
         //create a dictionary using array
-        char[] arr_char=new char[128];
+        int[] arr_char=new int[128];
         for(char c: s.toCharArray()) arr_char[c]++; //character and its corresponding frequency in the string s
 
-        //left anchor - right anchor - mininum index - counter as the length of the smaller string
         int left=0, right=0, minStart=0, counter= t.length(), minLength=Integer.MAX_VALUE;
         while(right<s.length()){
             char c1=s.charAt(right);
