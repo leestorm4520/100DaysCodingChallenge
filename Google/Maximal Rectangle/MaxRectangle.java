@@ -21,10 +21,25 @@ cols == matrix[i].length
 1 <= row, cols <= 200
 matrix[i][j] is '0' or '1'.
  */
+
+ /*
+  * Brainstorming the algorithm
+  using a while loop to check all the square
+  with a maxArea variable to check whether it's a 1 or not
+
+  if it's a 1, then 
+  */
 public class MaxRectangle {
     static void main(String args[]){
 
     }
+    static int findRectangle(char[][] matrix, int x, int y)
+{
+    int area=0;
+
+    return area;
+
+}
     static int maximalRectangle(char[][] matrix){
         int maxArea=0;
         return maxArea;
