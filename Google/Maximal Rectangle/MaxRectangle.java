@@ -24,33 +24,40 @@ matrix[i][j] is '0' or '1'.
 
  /*
   * Brainstorming the algorithm
+
   using a while loop to check all the square
   with a maxArea variable to check whether it's a 1 or not
 
-  if it's a 1, then 
+  if it's a 1, then grow the square. There are 4 sides on the square, so grow forth. 
+  Would not grow into squares already counted
+
+  if it's a 0, then skip it
   */
 public class MaxRectangle {
     static void main(String args[]){
         char[][] matrix = {{"1","0","1","0","0"},{"1","0","1","1","1"},{"1","1","1","1","1"},{"1","0","0","1","0"}};
 
     }
-    static int findRectangle(char[][] matrix, int x, int y)
+    static int findArea(char[][] matrix, int x, int y)
 {
-    int rowLen=matrix.length;
-    int columnLen=matrix[0].length;
+   
     int area=0;
 
     return area;
 
 }
-    static int maximalRectangle(char[][] matrix){
+    static int maximalRectangle(char[][] matrix, int x, int y){
         if(matrix==null) return 0;
         int maxArea=0;
-        int rowLen=matrix.length;
-        int columnLen=matrix[0].length;
-        int x=0, y=0;
-        while(x<rowLen && y<columnLen){
-            if(matrix[x][y]=='0')
+
+        if(matrix[x][y]=='0'){
+            if(y<matrix[0].length) maximalRectangle(matrix, x, y+1);
+            if(x<matrix.length) maximalRectangle(matrix, x+1, 0);
+        }
+        else{
+            if(maxArea<findArea(matrix, x, y)){
+                maxArea=findArea(matrix, x, y);
+            }
         }
 
         return maxArea;
