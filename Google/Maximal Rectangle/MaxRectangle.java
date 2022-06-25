@@ -50,7 +50,7 @@ public class MaxRectangle {
         int columnLen=matrix[0].length;
         int x=0, y=0;
         while(x<rowLen && y<columnLen){
-            if(matrix[x][y]=='')
+            if(matrix[x][y]=='0')
         }
 
         return maxArea;
