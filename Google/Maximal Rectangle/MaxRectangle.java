@@ -31,17 +31,28 @@ matrix[i][j] is '0' or '1'.
   */
 public class MaxRectangle {
     static void main(String args[]){
+        char[][] matrix = {{"1","0","1","0","0"},{"1","0","1","1","1"},{"1","1","1","1","1"},{"1","0","0","1","0"}};
 
     }
     static int findRectangle(char[][] matrix, int x, int y)
 {
+    int rowLen=matrix.length;
+    int columnLen=matrix[0].length;
     int area=0;
 
     return area;
 
 }
     static int maximalRectangle(char[][] matrix){
+        if(matrix==null) return 0;
         int maxArea=0;
+        int rowLen=matrix.length;
+        int columnLen=matrix[0].length;
+        int x=0, y=0;
+        while(x<rowLen && y<columnLen){
+            if(matrix[x][y]=='')
+        }
+
         return maxArea;
     }
 }
