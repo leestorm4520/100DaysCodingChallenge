@@ -36,28 +36,29 @@ matrix[i][j] is '0' or '1'.
 public class MaxRectangle {
     static void main(String args[]){
         char[][] matrix = {{"1","0","1","0","0"},{"1","0","1","1","1"},{"1","1","1","1","1"},{"1","0","0","1","0"}};
+        System.out.println(maximalRectangle(matrix, 0, 0));
 
     }
     static int findArea(char[][] matrix, int x, int y)
 {
    
-    int area=0;
+    if(x<matri)
 
     return area;
 
 }
     static boolean checkRectangle(char[] matrix, int x, int y){
-        
+
 
         return true;
     }
     static int maximalRectangle(char[][] matrix, int x, int y){
-        if(matrix==null) return 0;
+        if(matrix==null) return -1;
         int maxArea=0;
 
         if(matrix[x][y]=='0'){
-            if(y<matrix[0].length) maximalRectangle(matrix, x, y+1);
-            if(x<matrix.length) maximalRectangle(matrix, x+1, 0);
+            if(y<matrix[0].length) return maximalRectangle(matrix, x, y+1);
+            if(x<matrix.length) return maximalRectangle(matrix, x+1, 0);
         }
         else{
             if(maxArea<findArea(matrix, x, y)){
