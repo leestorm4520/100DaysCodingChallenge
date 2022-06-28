@@ -46,6 +46,11 @@ public class MaxRectangle {
     return area;
 
 }
+    static boolean checkRectangle(char[] matrix, int x, int y){
+        
+
+        return true;
+    }
     static int maximalRectangle(char[][] matrix, int x, int y){
         if(matrix==null) return 0;
         int maxArea=0;
@@ -57,9 +62,9 @@ public class MaxRectangle {
         else{
             if(maxArea<findArea(matrix, x, y)){
                 maxArea=findArea(matrix, x, y);
+                
             }
         }
-
         return maxArea;
     }
 }
