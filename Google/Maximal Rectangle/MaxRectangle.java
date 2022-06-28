@@ -1,16 +1,16 @@
 /*
  * Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
 
-Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+Input: matrix = [['1','0','1','0','0'],['1','0','1','1','1'],['1','1','1','1','1'],['1','0','0','1','0']]
 Output: 6
 Explanation: The maximal rectangle is shown in the above picture.
 Example 2:
 
-Input: matrix = [["0"]]
+Input: matrix = [['0']]
 Output: 0
 Example 3:
 
-Input: matrix = [["1"]]
+Input: matrix = [['1']]
 Output: 1
  
 
@@ -35,37 +35,19 @@ matrix[i][j] is '0' or '1'.
   */
 public class MaxRectangle {
     static void main(String args[]){
-        char[][] matrix = {{"1","0","1","0","0"},{"1","0","1","1","1"},{"1","1","1","1","1"},{"1","0","0","1","0"}};
-        System.out.println(maximalRectangle(matrix, 0, 0));
+        char[][] matrix = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
+        System.out.println(maximalRectangle(matrix));
 
     }
-    static int findArea(char[][] matrix, int x, int y)
-{
-   
-    if(x<matri)
-
-    return area;
-
-}
-    static boolean checkRectangle(char[] matrix, int x, int y){
-
-
-        return true;
+  
     }
     static int maximalRectangle(char[][] matrix, int x, int y){
-        if(matrix==null) return -1;
-        int maxArea=0;
+        if(matrix==null || matrix,length==0 || matrix[0]==null) return 0;
+       int m=matrix.length, n=.matrix[0].length, maxArea=0;
+       int[] left=new int[n];
+       int[] right=new int[n];
+       int[] height=new int[m];
 
-        if(matrix[x][y]=='0'){
-            if(y<matrix[0].length) return maximalRectangle(matrix, x, y+1);
-            if(x<matrix.length) return maximalRectangle(matrix, x+1, 0);
-        }
-        else{
-            if(maxArea<findArea(matrix, x, y)){
-                maxArea=findArea(matrix, x, y);
-                
-            }
-        }
         return maxArea;
     }
 }
