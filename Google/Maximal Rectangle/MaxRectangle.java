@@ -33,6 +33,7 @@ matrix[i][j] is '0' or '1'.
 
   if it's a 0, then skip it
   */
+  import java.util.*;
 public class MaxRectangle {
     static void main(String args[]){
         char[][] matrix = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
@@ -43,10 +44,11 @@ public class MaxRectangle {
     }
     static int maximalRectangle(char[][] matrix, int x, int y){
         if(matrix==null || matrix,length==0 || matrix[0]==null) return 0;
-       int m=matrix.length, n=.matrix[0].length, maxArea=0;
+       int m=matrix.length, n=matrix[0].length, maxArea=0;
        int[] left=new int[n];
        int[] right=new int[n];
-       int[] height=new int[m];
+       int[] height=new int[n];
+       Arrays.fill(right, n-1);
 
         return maxArea;
     }
