@@ -55,7 +55,24 @@ public class MaxRectangle {
             if(matrix[i][j]=='1') height[j]++;
             else height[j]=0;
         }
-        
+        //compute left( from left to right)
+        for(int j=0;j<n;j++){
+            if(matrix[i][j]=='1') left[j]=Math.max(left[j], curLeft );
+            else{ 
+                left[j]=0; 
+                curLeft=j+1;
+            }
+        }
+        //compute right(from right to left)
+        for(int j=n-1; j>=0;i--){
+            if(matrix[i][j]=='1') right[j]=Math.min(right[j], curRight);
+            else{
+                right[j]=n;
+                curRight=j;
+            }
+        }
+        //compute the area of the rectangle
+        for(int j=0;j<n;j++) maxArea=Math.max(maxArea, (right[j]-left[j])*height[j]);
 
        }
 
