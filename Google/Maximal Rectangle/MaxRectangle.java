@@ -46,10 +46,17 @@ public class MaxRectangle {
        int[] left=new int[n];
        int[] right=new int[n];
        int[] height=new int[n];
-       Arrays.fill(right, n-1);
+       Arrays.fill(left,0); Arrays.fill(right, n); Arrays.fill(height, 0);
+        
+       //compute height
        for(int i=0;i<m;i++){
-        int rB=n-1;
-        for(int j=n-1;)
+        int curLeft=0, curRight=n;
+        for(int j=0;j<n;j++){
+            if(matrix[i][j]=='1') height[j]++;
+            else height[j]=0;
+        }
+        
+
        }
 
         return maxArea;
