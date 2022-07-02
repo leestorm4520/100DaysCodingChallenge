@@ -58,6 +58,9 @@ public class MinWindow {
         for(char c: t.toCharArray()) arr_char[c]++; //character and its corresponding frequency in the string s
 
         int left=0, right=0, minStart=0, counter= t.length(), minLength=Integer.MAX_VALUE;
+        /*
+         * Create two pointers to keep track of the beginning and the ending of the minimum string
+         */
         while(right<s.length()){
             char c1=s.charAt(right);
             if(arr_char[c1]>0) counter--;
