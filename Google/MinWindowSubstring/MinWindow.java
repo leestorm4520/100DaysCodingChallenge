@@ -60,6 +60,15 @@ public class MinWindow {
         int left=0, right=0, minStart=0, counter= t.length(), minLength=Integer.MAX_VALUE;
         /*
          * Create two pointers to keep track of the beginning and the ending of the minimum string
+         * Start at the right: if the value is more than zero, that means the character at the right pointer is in the smaller string --> decrement the counter
+         * Decrement the value of the character
+         * Increment the right pointer
+         * 
+         * if the counter==0, which means all the characters of the smaller substring already present
+         * --> time to compare the length of the substring (Copmpare right-left < minLength)
+         * Start at the left: increment the value of the character
+         * If the value of the character is more than 0, that means the character at the left pointer is in the smaller string --> increment the counter
+         * increment the left pointer
          */
         while(right<s.length()){
             char c1=s.charAt(right);
