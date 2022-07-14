@@ -47,6 +47,17 @@ public class CompleteNode {
  * }
  */
     public int countNodes(TreeNode root) {
-        
+        if(root == null)
+        return 0;
+        TreeNode curLeft = root.left;
+        TreeNode curRight = root.right;
+        int num = 1;
+        while(curRight != null)
+        {
+            curLeft = curLeft.left;
+            curRight = curRight.right;
+            num = (num<<1)+1;
+        }
+        return ((curLeft == null) ?  num : 1+countNodes(root.right)+countNodes(root.left));
     }
 }
