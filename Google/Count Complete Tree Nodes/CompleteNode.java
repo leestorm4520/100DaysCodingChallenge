@@ -58,6 +58,11 @@ public class CompleteNode {
             curRight = curRight.right;
             num = (num<<1)+1;
         }
+        /*
+         *  The signed left shift operator "<<" shifts a bit pattern to the left
+            The signed right shift operator ">>" shifts a bit pattern to the right.
+            The unsigned right shift operator ">>>" shifts a zero into the leftmost position
+         */
         return ((curLeft == null) ?  num : 1+countNodes(root.right)+countNodes(root.left));
     }
 }
